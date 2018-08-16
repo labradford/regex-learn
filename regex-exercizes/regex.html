@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Regular Expression Examples</title>
+  <script src="regex.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Regex Examples</h1>
+      <p class="lead">Thanks for coming to Regex Demystified. Let's see some examples of regular expressions.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="row mb-5">
+      <div class="col-sm-4">
+        <h3>Literal (Exact) Match</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"Technology is a useful servant but a dangerous master."</h5>
+            <h6 class="card-subtitle mb-2 text-muted">search for exact match on the word dangerous</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /dangerous/</code></p>
+            <button class="btn btn-info" onclick="exactMatchExample()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="exact-match-result"></span></h6></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Case insensitive</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"Technology is a useful servant but a dangerous master."</h5>
+            <h6 class="card-subtitle mb-2 text-muted">search for match on the word technology - case insensitive</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /technology/i</code></p>
+            <button class="btn btn-info" onclick="ciMatchExample()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="ci-match-result"></span></h6></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Global</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"Even when you take a holiday from technology, technology doesn't take a break from you"</h5>
+            <h6 class="card-subtitle mb-2 text-muted">search for match on the word technology - case insensitive and global</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /technology/gi</code></p>
+            <button class="btn btn-info" onclick="cigMatchExample()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="cig-match-result"></span></h6></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-sm-4">
+        <h3>Brackets</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"A computer once beat me at chess, but it was no match for me at kick boxing"</h5>
+            <h6 class="card-subtitle mb-2 text-muted">return a count of all of the vowels</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /[aeiou]/ig</code></p>
+            <button class="btn btn-info" onclick="findVowels()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="vowels"> </span></h6></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Brackets (with options)</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"pat pet pit pot put"</h5>
+            <h6 class="card-subtitle mb-2 text-muted">return all of the words that start with p, end with t and contain either an a e or u</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /p[aeu]t/g</code></p>
+            <button class="btn btn-info" onclick="findSpecWords()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="spec-words"> </span></h6></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Brackets (numbers)</h3>
+        <div class="card">
+          <div class="card-body">
+              <h5 class="card-title">"Here are the three types: pie, pi, and 3.14"</h5>
+              <h6 class="card-subtitle mb-2 text-muted">return the pie numbers</h6>
+              <p class="card-text bg-light text-center"><code>let pattern = /[0-9]/g</code></p>
+              <button class="btn btn-info" onclick="findPie()">Match it</button>
+            </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="pie"> </span></h6></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+
+      <div class="col-sm-4">
+        <h3>Starts with ^</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"Bond. James Bond."</h5>
+            <h6 class="card-subtitle mb-2 text-muted">checks string to see if it starts with Bond</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /^bond/i</code></p>
+            <button class="btn btn-info" onclick="findBond()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="bond"> </span></h6></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Starts with ^</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"Bond. James Bond."</h5>
+            <h6 class="card-subtitle mb-2 text-muted">checks string to see if it starts with James</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /^james/i</code></p>
+            <button class="btn btn-info" onclick="findJames()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="james"></span></h6></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Find both ( | )</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"Bond. James Bond."</h5>
+            <h6 class="card-subtitle mb-2 text-muted">checks string to see if it has either James or Bond</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /(james|bond)/i</code></p>
+            <button class="btn btn-info" onclick="findJamesBond()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="jamesbond"></span></h6></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-sm-4">
+        <h3>Word Characters</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"Always give 100%!"</h5>
+            <h6 class="card-subtitle mb-2 text-muted">search for word characters</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /\w/g</code></p>
+            <button class="btn btn-info" onclick="findWordCharacters()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="word-char-result"> </span></h6></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Non-word Characters</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"Always give 100%!"</h5>
+            <h6 class="card-subtitle mb-2 text-muted">search for non-word characters</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /\W/g</code></p>
+            <button class="btn btn-info" onclick="findNonWordCharacters()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="nonword-char-result"> </span></h6></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Whitespace Characters</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">" Technology doesn't address everything  -  for example, air travel still sucks.   "</h5>
+            <h6 class="card-subtitle mb-2 text-muted">find the count of whitespace (also includes carriage return, tab, form feed, and new line characters)</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /\s/</code></p>
+            <button class="btn btn-info" onclick="spaceMatch()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="space-result"></span></h6></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-sm-4">
+        <h3>Anchor character $</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"The last car on a train is the caboose"</h5>
+            <h6 class="card-subtitle mb-2 text-muted">search the end of the string</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /caboose$/</code></p>
+            <button class="btn btn-info" onclick="anchorMatch()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="anchor-result"></span></h6></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Find 0 or more</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"To err is human, but to really foul things up you need a computer"</h5>
+            <h6 class="card-subtitle mb-2 text-muted">search for 0 or more (you don't want a missing character to prevent a match)</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /to*/ig</code></p>
+            <button class="btn btn-info" onclick="starMatch()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="star-result"></span></h6></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Find 1 or more</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"Technology has become as ubiquitous as the air we breathe, so we are no longer conscious of its presence"</h5>
+            <h6 class="card-subtitle mb-2 text-muted">search for 1 or more</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /as+/g</code></p>
+            <button class="btn btn-info" onclick="plusMatch()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="plus-result"></span></h6></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <h4 class="alert alert-info">you use the plus sign + to look for one or more characters and the asterisk * to look for zero or more characters. But sometimes you want to match a certain range of patterns. This is how you can specify a range.</h4>
+      <div class="col-sm-4">
+        <h3>Find a Range</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"Ohhhh No!!!"</h5>
+            <h6 class="card-subtitle mb-2 text-muted">find between 3 and 6</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /oh{3,6}/i</code></p>
+            <button class="btn btn-info" onclick="rangeMatch()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="range-result"></span></h6></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Range w/Lower </h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"Helloooooooo World!"</h5>
+            <h6 class="card-subtitle mb-2 text-muted">find at least 2</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /hello{2,}/i</code></p>
+            <button class="btn btn-info" onclick="lowerMatch()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="lower-result"></span></h6></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Exact Range</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"Are you reaaaadddddy?"</h5>
+            <h6 class="card-subtitle mb-2 text-muted">find exact count</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /rea{4}d{5}y/i</code></p>
+            <button class="btn btn-info" onclick="exactMatch()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="exact-result"></span></h6></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+
+      <div class="col-sm-4">
+        <h3>Optional Character</h3>
+        <p class="alert alert-info">You can specify the possible existence of an element with a question mark, ?. This checks for zero or one of the preceding element. You can think of this symbol as saying the previous element is optional.</p>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"The color of the colonel's uniform was a blue colour"</h5>
+            <h6 class="card-subtitle mb-2 text-muted">find alternate spellings of color</h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /colou?r/gi</code></p>
+            <button class="btn btn-info" onclick="altMatch()">Match it</button>
+          </div>
+          <div class="card-footer text-muted"><h6>Result: <span class="text-info" id="alt-result"></span></h6></div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <h3>Lookaheads</h3>
+        <p class="alert alert-info">Lookaheads are patterns that will look-ahead in your string to check for patterns further along. This is useful when you want to search for multiple patterns over the same string. There are both positive (?=) and negative (?!) lookaheads. The positive lookahead sees if something is a match. The negative lookahead sees if something does not match. Here are some examples of how you might use a positive lookahead.</p>
+
+        <div class="row mb-5">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">"happy1"</h5>
+                <h6 class="card-subtitle mb-2 text-muted">The password must contain from 4 to 8 characters, and include at least one number. </h6>
+                <p class="card-text bg-light text-center"><code>let pattern = /(?=\w{4,8})(?=\D*\d)/</code></p>
+                <button class="btn btn-info" onclick="look1Match()">Match it</button>
+              </div>
+              <div class="card-footer text-muted">
+                <h6>Result: <span class="text-info" id="look1-result"></span></h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">"password123"</h5>
+                <h6 class="card-subtitle mb-2 text-muted">The password must be at least 5 characters long, and include two consecutive digits. </h6>
+                <p class="card-text bg-light text-center"><code>let pattern = /(?=\D*\d{2})(?=\w{5,})/</code></p>
+                <button class="btn btn-info" onclick="look2Match()">Match it</button>
+              </div>
+              <div class="card-footer text-muted">
+                <h6>Result: <span class="text-info" id="look2-result"></span></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-sm-4">
+        <p class="alert alert-info">So now we have an idea on how to create regular expressions and how to match and test them. Searching can be very useful, but it is even better to use the match to find and replace items in your code</p>
+
+        <h3>Find and Replace</h3>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"The sky is gray"</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Find the word gray and replace it with blue. </h6>
+            <p class="card-text bg-light text-center"><code>let pattern = /gray/i</code></p>
+            <button class="btn btn-info" onclick="replaceGray()">Replace it</button>
+          </div>
+          <div class="card-footer text-muted">
+            <h6><span class="text-info" id="replace-gray-result">The sky is gray</span></h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="alert alert-info">
+          <h4>Now that we've gone over the basics, I've come up with some challenges that you can work on. Open index.html and challenges.js to get started</h4>
+          <h5>Even More Regex Fun:</h5>
+          <ul>
+            <li><a href="https://learn.freecodecamp.org/javascript-algorithms-and-data-structures/regular-expressions" target="_blank">https://learn.freecodecamp.org/javascript-algorithms-and-data-structures/regular-expressions</a></li>
+            <li><a href="https://www.youtube.com/watch?v=7DG3kCDx53c" target="_blank">https://www.youtube.com/watch?v=7DG3kCDx53c</a></li>
+            <li><a href="https://regexone.com/" target="_blank">https://regexone.com/</a></li>
+            <li><a href="https://regexcrossword.com/" target="_blank">https://regexcrossword.com/</a></li>
+            <li><a href="https://www.hackerrank.com/domains/regex" target="_blank">https://www.hackerrank.com/domains/regex</a></li>
+            <li><a href="https://callumacrae.github.io/regex-tuesday/" target="_blank">https://callumacrae.github.io/regex-tuesday/</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div><!-- end container -->
+
+</body>
+</html>
